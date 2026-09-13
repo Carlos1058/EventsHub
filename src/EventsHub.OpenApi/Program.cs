@@ -1,20 +1,15 @@
 using System.Reflection;
 using EventsHub.Api.Controllers;
-using EventsHub.Persistence;
-using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 
-services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data source=eventshub.db"));
-
 services
     .AddOpenApiDocument(document =>
     {
         document.DocumentName = "EventsHub";
-        document.Title = "EventsHubV1";
+        document.Title = "EventsHubV1"; // Official interface name. No spaces. PascalCase.
         document.Version = "1.0.0";
         document.DefaultResponseReferenceTypeNullHandling =
             NJsonSchema.Generation.ReferenceTypeNullHandling.NotNull;
@@ -26,6 +21,7 @@ services.AddMvc()
     .AddControllersAsServices()
     .AddNewtonsoftJson(options =>
     {
+        // Match the API's camelCase JSON output.
         options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
     });
 

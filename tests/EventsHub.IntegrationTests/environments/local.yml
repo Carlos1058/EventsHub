@@ -1,5 +1,5 @@
 name: local
 variables:
-  - name: baseURL
+  - name: baseUrl
     value: https://localhost:5001/api/v1
     description: ""

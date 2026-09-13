@@ -1,14 +1,14 @@
 using EventsHub.Domain;
 
-namespace EventsHub.Persistence
-{
-    public class DbInitializer
-    {
-        public static async Task SeedDataAsync(AppDbContext context)
-        {
-            if (context.Events.Any()) return;
+namespace EventsHub.Persistence;
 
-                    var events = new List<Event>
+public static class DbInitializer
+{
+    public static async Task SeedDataAsync(AppDbContext context)
+    {
+        if (context.Events.Any()) return;
+
+        var events = new List<Event>
         {
             new() {
                 Title = "Past Event 1",
@@ -112,9 +112,8 @@ namespace EventsHub.Persistence
             }
         };
 
-            context.Events.AddRange(events);
+        context.Events.AddRange(events);
 
-            await context.SaveChangesAsync();
-        }
+        await context.SaveChangesAsync();
     }
 }

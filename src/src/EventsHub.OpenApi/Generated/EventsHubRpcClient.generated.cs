@@ -28,18 +28,18 @@ namespace EventsHub.OpenApi.Client
     public partial interface IEventsRpcClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Event>> GetEventsAsynvAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Event>> GetEventsAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Event>> GetEventsAsynvAsync(System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Event>> GetEventsAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Event> GetEventByIdAsync(string id);
+        System.Threading.Tasks.Task<Event> GetEventDetailAsync(string id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Event> GetEventByIdAsync(string id, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<Event> GetEventDetailAsync(string id, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -58,7 +58,7 @@ namespace EventsHub.OpenApi.Client
         public EventsRpcClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "http://localhost:5011";
+            BaseUrl = "http://127.0.0.1:5011";
             _httpClient = httpClient;
             Initialize();
         }
@@ -92,14 +92,14 @@ namespace EventsHub.OpenApi.Client
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Event>> GetEventsAsynvAsync()
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Event>> GetEventsAsync()
         {
-            return GetEventsAsynvAsync(System.Threading.CancellationToken.None);
+            return GetEventsAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Event>> GetEventsAsynvAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Event>> GetEventsAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -168,14 +168,14 @@ namespace EventsHub.OpenApi.Client
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<Event> GetEventByIdAsync(string id)
+        public virtual System.Threading.Tasks.Task<Event> GetEventDetailAsync(string id)
         {
-            return GetEventByIdAsync(id, System.Threading.CancellationToken.None);
+            return GetEventDetailAsync(id, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<Event> GetEventByIdAsync(string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<Event> GetEventDetailAsync(string id, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -406,7 +406,7 @@ namespace EventsHub.OpenApi.Client
         public WeatherForecastRpcClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "http://localhost:5011";
+            BaseUrl = "http://127.0.0.1:5011";
             _httpClient = httpClient;
             Initialize();
         }

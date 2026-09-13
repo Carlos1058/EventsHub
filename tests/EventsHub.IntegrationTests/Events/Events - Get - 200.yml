@@ -5,10 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{baseURL}}/events/:eventid"
+  url: "{{baseUrl}}/events/:eventId"
   params:
-    - name: eventid
-      value: 0dc6c97f-0c34-479d-be33-900939b51049
+    - name: eventId
+      value: 55a58d3c-efae-4674-8122-b4383195445a
       type: path
   auth: inherit
 
@@ -16,7 +16,7 @@ runtime:
   scripts:
     - type: tests
       code: |-
-        test("Status code is 200", function() {
+        test("Status code is 200 OK", function() {
           expect(res.getStatus()).to.equal(200);
         });
 
